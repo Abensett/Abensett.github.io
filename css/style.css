@@ -28,6 +28,8 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    /* transition sur les couleurs pour le dark mode */
+    transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 /* ─── Nav ─── */
@@ -44,6 +46,37 @@ nav {
     background: var(--bg);
     border-bottom: 1px solid var(--border);
     z-index: 100;
+    transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+
+/* ─── Theme toggle ─── */
+.theme-toggle {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(64, 103, 43, 0.08);
+    box-shadow: 0 0 12px rgba(64, 103, 43, 0.2);
+}
+
+.toggle-icon {
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .logo {
@@ -76,6 +109,8 @@ nav ul li a:hover {
     padding: calc(var(--nav-h) + 80px) 6% 80px;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .section-alt {
@@ -218,6 +253,13 @@ code {
 }
 
 /* ─── Pyramid ─── */
+/*
+    --s contrôle toute la taille de la pyramide.
+    Changer --s suffit pour redimensionner sans toucher au reste.
+    border = --s/2 (demi-base du triangle CSS)
+    transform-origin = --s/2 (axe de rotation des faces)
+    translateY base = --s * 0.365 (empirique pour fermer le fond)
+*/
 .pyramid-wrap {
     width: 320px;
     height: 320px;
@@ -228,8 +270,9 @@ code {
 }
 
 .pyramid {
-    width: 200px;
-    height: 200px;
+    --s: 200px;
+    width: var(--s);
+    height: var(--s);
     position: relative;
     transform-style: preserve-3d;
     animation: Rotate 25s linear infinite;
@@ -239,7 +282,7 @@ code {
     width: 100%;
     height: 100%;
     position: absolute;
-    transform: translateY(73px) rotateX(90deg);
+    transform: translateY(calc(var(--s) * 0.365)) rotateX(90deg);
     background: #724916;
     opacity: 0.5;
 }
@@ -248,8 +291,8 @@ code {
     width: 0;
     height: 0;
     opacity: 0.8;
-    border: 100px solid transparent;
-    border-bottom: 200px solid #e8d5b0;
+    border: calc(var(--s) / 2) solid transparent;
+    border-bottom: var(--s) solid #e8d5b0;
     border-top: 0;
     position: absolute;
 }
@@ -261,26 +304,127 @@ code {
 }
 
 .two {
-    transform-origin: 100px 0;
+    transform-origin: calc(var(--s) / 2) 0;
     transform: rotateY(90deg) rotateX(-30deg);
     border-bottom-color: #466f50;
 }
 
 .three {
-    transform-origin: 100px 0;
+    transform-origin: calc(var(--s) / 2) 0;
     transform: rotateY(270deg) rotateX(-30deg);
     border-bottom-color: #801515;
 }
 
 .four {
-    transform-origin: 100px 0;
+    transform-origin: calc(var(--s) / 2) 0;
     transform: rotateY(0) rotateX(-30deg);
     border-bottom-color: #d0e8ff;
 }
 
 @keyframes Rotate {
-    from { transform: rotateY(0)     rotateX(30deg) rotateZ(30deg); }
+    from { transform: rotateY(0)      rotateX(30deg) rotateZ(30deg); }
     to   { transform: rotateY(360deg) rotateX(30deg) rotateZ(30deg); }
+}
+
+/* pyramide décorative — copie exacte, juste repositionnée en arrière-plan */
+.pyramid-deco {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ─── Cube wireframe ─── */
+/*
+    même technique que la pyramide : preserve-3d + Rotate
+    --cs contrôle la taille, translateZ(--cs/2) place chaque face
+    wireframe : fond transparent, juste les bordures vertes
+*/
+.cube {
+    --cs: 60px;
+    width: var(--cs);
+    height: var(--cs);
+    position: relative;
+    transform-style: preserve-3d;
+    animation: Rotate 20s linear infinite;
+}
+
+.face {
+    position: absolute;
+    width: var(--cs);
+    height: var(--cs);
+    border: 1.5px solid var(--accent);
+    background: rgba(64, 103, 43, 0.04);
+}
+
+.face.front  { transform: translateZ(calc(var(--cs) / 2)); }
+.face.back   { transform: rotateY(180deg)  translateZ(calc(var(--cs) / 2)); }
+.face.left   { transform: rotateY(-90deg)  translateZ(calc(var(--cs) / 2)); }
+.face.right  { transform: rotateY(90deg)   translateZ(calc(var(--cs) / 2)); }
+.face.top    { transform: rotateX(90deg)   translateZ(calc(var(--cs) / 2)); }
+.face.bottom { transform: rotateX(-90deg)  translateZ(calc(var(--cs) / 2)); }
+
+/* même classe deco que pyramid-deco, réutilisée */
+.cube-deco {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.28;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ─── Autres formes géométriques ─── */
+/*
+    Même principe : animation Rotate sur des formes 2D/3D
+    - ring   : cercle vu de face qui tourne en 3D, donne une ellipse qui se compresse/étire
+    - diamond: carré orienté 45deg qui tourne en 3D
+    - triangle: triangle plat (border trick) qui tourne comme une face de pyramide
+    Toutes ces formes réutilisent @keyframes Rotate déjà défini.
+*/
+
+.geo-deco {
+    position: absolute;
+    pointer-events: none;
+}
+
+/* ring */
+.geo-ring {
+    --gs: 60px;
+    width: var(--gs);
+    height: var(--gs);
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    background: transparent;
+    animation: Rotate linear infinite;
+}
+
+/* diamond : keyframe séparé pour inclure le rotate(45deg) initial */
+.geo-diamond {
+    --gs: 50px;
+    width: var(--gs);
+    height: var(--gs);
+    border: 1.5px solid var(--accent);
+    background: rgba(64, 103, 43, 0.04);
+    animation: RotateDiamond linear infinite;
+}
+
+@keyframes RotateDiamond {
+    from { transform: rotateZ(45deg) rotateY(0)      rotateX(30deg); }
+    to   { transform: rotateZ(45deg) rotateY(360deg) rotateX(30deg); }
+}
+
+/* triangle plat : border trick comme les faces de pyramide */
+.geo-triangle {
+    --gs: 40px;
+    width: 0;
+    height: 0;
+    border-left: calc(var(--gs) / 2) solid transparent;
+    border-right: calc(var(--gs) / 2) solid transparent;
+    border-bottom: var(--gs) solid rgba(64, 103, 43, 0.4);
+    animation: Rotate linear infinite;
 }
 
 /* ─── About ─── */
@@ -420,6 +564,19 @@ code {
     margin-top: 10px;
 }
 
+.project-wip {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
 .project-meta {
     display: flex;
     flex-wrap: wrap;
@@ -475,39 +632,188 @@ code {
 }
 
 /* ─── Responsive ─── */
+
+/* tablette */
 @media (max-width: 860px) {
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 32px;
     }
 
     .project-grid {
         grid-template-columns: 1fr;
     }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
 }
 
+/* mobile */
 @media (max-width: 640px) {
-    .hero {
-        flex-direction: column;
-        justify-content: center;
-        gap: 48px;
+    /* sections moins de padding */
+    .section {
+        padding: calc(var(--nav-h) + 40px) 5% 56px;
+        align-items: flex-start;
     }
 
-    .pyramid-wrap {
-        width: 180px;
-        height: 180px;
-    }
-
-    .pyramid {
-        width: 140px;
-        height: 140px;
+    /* nav : on cache les liens, logo + bouton restent */
+    nav {
+        padding: 0 5%;
     }
 
     nav ul {
         display: none;
     }
 
-    .project-featured {
-        padding: 24px;
+    /* hero : colonne, pyramide en bas centrée */
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px;
     }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    /* --s contrôle toute la taille, une seule ligne suffit */
+    .pyramid-wrap {
+        align-self: center;
+        width: 160px;
+        height: 160px;
+    }
+
+    .pyramid-wrap .pyramid {
+        --s: 130px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* cacher les formes déco sur mobile : trop chargé */
+    .geo-deco,
+    .pyramid-deco,
+    .cube-deco {
+        display: none;
+    }
+
+    /* projets */
+    .project-featured {
+        padding: 20px;
+    }
+
+    .project-featured h3 {
+        font-size: 1.2rem;
+    }
+
+    /* contact */
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .contact-links .btn,
+    .contact-links .btn-outline {
+        width: 100%;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* petit mobile */
+@media (max-width: 400px) {
+    .skill-chips span {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    .project-tag,
+    .score {
+        font-size: 0.62rem;
+    }
+}
+
+/* ─── Dark mode ─── */
+body.dark {
+    --accent:      #5cb840;
+    --accent-dark: #40a025;
+    --bg:          #070d07;
+    --bg-alt:      #0b110b;
+    --bg-card:     #101810;
+    --text:        #ddeedd;
+    --text-muted:  #7aaa7a;
+    --border:      #1c2e1c;
+}
+
+/* transitions sur les éléments qui changent de couleur */
+nav, .section, .section-alt, .project-card, .project-featured,
+.skill-chips span, .btn, .btn-outline, .btn-outline-sm,
+.theme-toggle, h2, h3, p, .tag, code {
+    transition: background-color 0.35s ease, border-color 0.35s ease,
+                color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/*
+    Glow en dark mode.
+    - .pyramid-deco / .pyramid-wrap : filter drop-shadow sur le wrapper
+      (aplatit le preserve-3d mais l'effet de lueur prime ici)
+    - .face (cube) : box-shadow sur chaque face, sans toucher au preserve-3d parent
+    - .geo-ring / .geo-diamond : box-shadow sur la forme plate
+    - .geo-triangle : filter drop-shadow (forme plate, pas de preserve-3d)
+*/
+
+body.dark .pyramid-deco {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 14px rgba(92, 184, 64, 0.65));
+}
+
+body.dark .pyramid-wrap {
+    filter: drop-shadow(0 0 22px rgba(92, 184, 64, 0.45));
+}
+
+body.dark .cube-deco {
+    opacity: 0.75;
+}
+
+body.dark .face {
+    border-color: #5cb840;
+    box-shadow: 0 0 10px rgba(92, 184, 64, 0.7),
+                inset 0 0 6px rgba(92, 184, 64, 0.1);
+    background: rgba(92, 184, 64, 0.03);
+}
+
+body.dark .geo-deco {
+    opacity: 0.75;
+}
+
+body.dark .geo-ring {
+    border-color: #5cb840;
+    box-shadow: 0 0 14px rgba(92, 184, 64, 0.8),
+                0 0 28px rgba(92, 184, 64, 0.35);
+}
+
+body.dark .geo-diamond {
+    border-color: #5cb840;
+    box-shadow: 0 0 12px rgba(92, 184, 64, 0.75),
+                0 0 24px rgba(92, 184, 64, 0.3);
+    background: rgba(92, 184, 64, 0.04);
+}
+
+body.dark .geo-triangle {
+    border-bottom-color: rgba(92, 184, 64, 0.7);
+    filter: drop-shadow(0 0 8px rgba(92, 184, 64, 0.9));
+}
+
+/* le bouton brille un peu en dark mode */
+body.dark .theme-toggle:hover {
+    box-shadow: 0 0 16px rgba(92, 184, 64, 0.45);
 }

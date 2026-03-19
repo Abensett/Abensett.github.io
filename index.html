@@ -21,18 +21,64 @@
             <li><a href="#projects">PROJECTS</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <span class="toggle-icon" id="toggleIcon">☽</span>
+            <span id="toggleLabel">Dark</span>
+        </button>
     </nav>
 
     <!-- Hero -->
     <section id="home" class="section hero">
         <div class="hero-content">
+            <!-- span : conteneur inline, pas de sémantique propre — sert juste à cibler du CSS -->
             <span class="tag">SECURITY / AUTOMATION / TEACHING</span>
+            <!-- .accent applique la couleur verte définie dans style.css -->
             <h1><span class="accent">Aimen</span></h1>
             <p class="hero-sub">Security branch · Detection engineering · Offensive security</p>
             <div class="hero-actions">
                 <a href="#projects" class="btn">View projects</a>
                 <a href="#contact" class="btn-outline">Contact</a>
             </div>
+        </div>
+        <!-- hero : 9 formes géométriques décoratives -->
+        <div class="cube-deco" style="right:12%;top:22%;">
+            <div class="cube" style="--cs:45px;animation-duration:15s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:8%;top:18%;opacity:0.22;">
+            <div class="geo-ring" style="--gs:70px;animation-duration:18s;"></div>
+        </div>
+        <div class="geo-deco" style="left:20%;bottom:15%;opacity:0.2;">
+            <div class="geo-diamond" style="--gs:35px;animation-duration:22s;"></div>
+        </div>
+        <div class="geo-deco" style="right:28%;bottom:20%;opacity:0.2;">
+            <div class="geo-triangle" style="--gs:45px;animation-duration:28s;"></div>
+        </div>
+        <div class="pyramid-deco" style="left:3%;bottom:20%;">
+            <div class="pyramid" style="--s:65px;animation-duration:48s;animation-direction:reverse;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
+        <div class="cube-deco" style="right:40%;top:8%;">
+            <div class="cube" style="--cs:30px;animation-duration:35s;animation-direction:reverse;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="right:5%;bottom:28%;opacity:0.2;">
+            <div class="geo-ring" style="--gs:45px;animation-duration:32s;"></div>
+        </div>
+        <div class="geo-deco" style="left:45%;top:12%;opacity:0.18;">
+            <div class="geo-diamond" style="--gs:28px;animation-duration:20s;animation-direction:reverse;"></div>
+        </div>
+        <div class="geo-deco" style="left:2%;top:42%;opacity:0.18;">
+            <div class="geo-triangle" style="--gs:32px;animation-duration:38s;animation-direction:reverse;"></div>
         </div>
         <div class="pyramid-wrap">
             <div class="pyramid">
@@ -47,14 +93,57 @@
 
     <!-- About -->
     <section id="about" class="section">
+        <!-- about : 9 formes géométriques décoratives -->
+        <div class="cube-deco" style="left:5%;top:30%;">
+            <div class="cube" style="--cs:35px;animation-duration:25s;animation-direction:reverse;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="right:18%;top:20%;opacity:0.2;">
+            <div class="geo-ring" style="--gs:55px;animation-duration:30s;animation-direction:reverse;"></div>
+        </div>
+        <div class="geo-deco" style="left:35%;bottom:10%;opacity:0.18;">
+            <div class="geo-triangle" style="--gs:38px;animation-duration:20s;"></div>
+        </div>
+        <div class="pyramid-deco" style="right:3%;bottom:8%;">
+            <div class="pyramid" style="--s:90px;animation-duration:55s;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:2%;bottom:18%;opacity:0.2;">
+            <div class="geo-diamond" style="--gs:45px;animation-duration:28s;"></div>
+        </div>
+        <div class="cube-deco" style="right:8%;top:15%;">
+            <div class="cube" style="--cs:40px;animation-duration:40s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:50%;top:10%;opacity:0.18;">
+            <div class="geo-ring" style="--gs:50px;animation-duration:35s;animation-direction:reverse;"></div>
+        </div>
+        <div class="geo-deco" style="right:25%;bottom:18%;opacity:0.18;">
+            <div class="geo-triangle" style="--gs:35px;animation-duration:42s;animation-direction:reverse;"></div>
+        </div>
+        <div class="pyramid-deco" style="left:22%;top:12%;">
+            <div class="pyramid" style="--s:55px;animation-duration:60s;animation-direction:reverse;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
         <div class="section-inner">
             <h2>About</h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Security branch, lvl 14/21.</p>
-                    <p>3 years in IT & security at a SaaS scale-up — implemented 50+ detection rules across 4 SaaS integrations, ran security audits, contributed to SOC 2 compliance.</p>
-                    <p>3 years teaching programming.</p>
-                    <p class="about-target">Target: <span class="accent">Security Engineer</span> — Detection & Automation.</p>
+                    <p>Computers are the medium I think in. Security is where that thinking gets tested.</p>
+                    <p>I break things to understand how they work. Then I build something with that knowledge. Then I explain it until I'm sure I actually got it.</p>
+                    <p class="about-target">That loop is what keeps me going.</p>
                 </div>
                 <div class="skills">
                     <div class="skill-group">
@@ -97,6 +186,46 @@
 
     <!-- Projects -->
     <section id="projects" class="section section-alt">
+        <!-- projects : 9 formes géométriques décoratives -->
+        <div class="geo-deco" style="right:3%;top:10%;opacity:0.22;">
+            <div class="geo-diamond" style="--gs:55px;animation-duration:35s;"></div>
+        </div>
+        <div class="geo-deco" style="right:15%;bottom:8%;opacity:0.18;">
+            <div class="geo-ring" style="--gs:65px;animation-duration:40s;"></div>
+        </div>
+        <div class="geo-deco" style="left:18%;bottom:12%;opacity:0.2;">
+            <div class="geo-triangle" style="--gs:42px;animation-duration:25s;animation-direction:reverse;"></div>
+        </div>
+        <div class="pyramid-deco" style="left:2%;top:15%;">
+            <div class="pyramid" style="--s:70px;animation-duration:70s;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
+        <div class="cube-deco" style="right:22%;top:18%;">
+            <div class="cube" style="--cs:40px;animation-duration:28s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:8%;top:25%;opacity:0.2;">
+            <div class="geo-ring" style="--gs:55px;animation-duration:45s;animation-direction:reverse;"></div>
+        </div>
+        <div class="geo-deco" style="left:30%;top:8%;opacity:0.18;">
+            <div class="geo-diamond" style="--gs:30px;animation-duration:32s;animation-direction:reverse;"></div>
+        </div>
+        <div class="geo-deco" style="right:10%;bottom:22%;opacity:0.2;">
+            <div class="geo-triangle" style="--gs:50px;animation-duration:38s;"></div>
+        </div>
+        <div class="pyramid-deco" style="right:5%;bottom:15%;">
+            <div class="pyramid" style="--s:65px;animation-duration:50s;animation-direction:reverse;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
         <div class="section-inner">
             <h2>Projects</h2>
 
@@ -109,7 +238,7 @@
                     <span class="score">125 / 100</span>
                 </div>
                 <h3>Webserv</h3>
-                <p>HTTP/1.1 server built from scratch in C++98. Non-blocking I/O via <code>epoll</code> — single process handling concurrent clients with no threads. Behavior validated against NGINX.</p>
+                <p>HTTP/1.1 server built from scratch in C++98. Non-blocking I/O via <code>epoll</code>, single process, no threads. Behavior validated against NGINX.</p>
                 <ul class="project-bullets">
                     <li>GET, POST, DELETE with accurate HTTP status codes</li>
                     <li>Config file: virtual hosts, custom routes, error pages, redirects, body size limits</li>
@@ -160,6 +289,31 @@
                     <a href="https://github.com/Abensett/9.-Minishell" class="btn-outline-sm" target="_blank" rel="noopener">GitHub</a>
                 </div>
 
+                <div class="project-card">
+                    <div class="project-meta">
+                        <span class="project-tag">Next.js</span>
+                        <span class="project-tag">TypeScript</span>
+                        <span class="project-tag">Supabase</span>
+                        <span class="project-tag">Mapbox</span>
+                    </div>
+                    <h3>EssenceMoinsCher.fr</h3>
+                    <p>Fuel price comparator using official French government data. Geolocation, interactive map, search and filtering across 9,934 stations and 33,994 prices updated daily via Vercel cron.</p>
+                    <p class="project-detail">Stack: Next.js 15, Tailwind, shadcn/ui, Supabase (PostgreSQL), Mapbox GL.</p>
+                    <a href="https://essencemoinscher.fr" class="btn" target="_blank" rel="noopener">Live demo</a>
+                </div>
+
+                <div class="project-card project-card-security">
+                    <div class="project-meta">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Bash</span>
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">Security</span>
+                    </div>
+                    <h3>Security Toolkit</h3>
+                    <p>Custom offensive tools for OSCP prep and bug bounty. Port scanner: TCP/UDP, CIDR support, banner grabbing, DNS resolution, JSON output. More tools in progress: format string helper, IDOR checker, header auditor.</p>
+                    <span class="project-wip">in progress</span>
+                </div>
+
                 <div class="project-card project-card-security">
                     <div class="project-meta">
                         <span class="project-tag">x86-64</span>
@@ -178,9 +332,53 @@
 
     <!-- Contact -->
     <section id="contact" class="section">
+        <!-- contact : 9 formes géométriques décoratives -->
+        <div class="cube-deco" style="left:10%;bottom:25%;">
+            <div class="cube" style="--cs:50px;animation-duration:18s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:35%;top:22%;opacity:0.18;">
+            <div class="geo-ring" style="--gs:50px;animation-duration:22s;"></div>
+        </div>
+        <div class="geo-deco" style="right:20%;bottom:20%;opacity:0.2;">
+            <div class="geo-diamond" style="--gs:40px;animation-duration:28s;animation-direction:reverse;"></div>
+        </div>
+        <div class="pyramid-deco" style="right:8%;top:20%;">
+            <div class="pyramid" style="--s:80px;animation-duration:45s;animation-direction:reverse;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
+        <div class="cube-deco" style="right:35%;top:15%;">
+            <div class="cube" style="--cs:35px;animation-duration:38s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:5%;top:28%;opacity:0.2;">
+            <div class="geo-ring" style="--gs:60px;animation-duration:32s;animation-direction:reverse;"></div>
+        </div>
+        <div class="geo-deco" style="right:5%;bottom:30%;opacity:0.2;">
+            <div class="geo-triangle" style="--gs:40px;animation-duration:25s;"></div>
+        </div>
+        <div class="geo-deco" style="left:25%;bottom:15%;opacity:0.18;">
+            <div class="geo-diamond" style="--gs:45px;animation-duration:42s;"></div>
+        </div>
+        <div class="pyramid-deco" style="left:40%;bottom:10%;">
+            <div class="pyramid" style="--s:50px;animation-duration:55s;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
         <div class="section-inner contact-inner">
             <h2>Contact</h2>
-            <p>Open to Security Engineer roles — detection, automation, offensive.</p>
+            <p>Open to Security Engineer roles. Detection, automation, offensive.</p>
             <div class="contact-links">
                 <a href="mailto:work@aimen.be" class="btn">work@aimen.be</a>
                 <a href="https://github.com/Abensett" class="btn-outline" target="_blank" rel="noopener">GitHub</a>
@@ -188,5 +386,25 @@
         </div>
     </section>
 
+    <script>
+        const btn   = document.getElementById('themeToggle');
+        const icon  = document.getElementById('toggleIcon');
+        const label = document.getElementById('toggleLabel');
+
+        // restaure la préférence au chargement
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            icon.textContent  = '☀';
+            label.textContent = 'Light';
+        }
+
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            icon.textContent  = isDark ? '☀' : '☽';
+            label.textContent = isDark ? 'Light' : 'Dark';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    </script>
 </body>
 </html>
