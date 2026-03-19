@@ -1,0 +1,192 @@
+<!-- TODO: rappel TypeScript (NestJS/React dans ft_transcendence, check les notes) -->
+<!-- TODO: changer le logo -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aimen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <img src="img/logo.png" class="logo" alt="logo">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="section hero">
+        <div class="hero-content">
+            <span class="tag">SECURITY / AUTOMATION / TEACHING</span>
+            <h1><span class="accent">Aimen</span></h1>
+            <p class="hero-sub">Security branch · Detection engineering · Offensive security</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn">View projects</a>
+                <a href="#contact" class="btn-outline">Contact</a>
+            </div>
+        </div>
+        <div class="pyramid-wrap">
+            <div class="pyramid">
+                <div class="base"></div>
+                <div class="triangle one"></div>
+                <div class="triangle two"></div>
+                <div class="triangle three"></div>
+                <div class="triangle four"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="section-inner">
+            <h2>About</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Security branch, lvl 14/21.</p>
+                    <p>3 years in IT & security at a SaaS scale-up — implemented 50+ detection rules across 4 SaaS integrations, ran security audits, contributed to SOC 2 compliance.</p>
+                    <p>3 years teaching programming.</p>
+                    <p class="about-target">Target: <span class="accent">Security Engineer</span> — Detection & Automation.</p>
+                </div>
+                <div class="skills">
+                    <div class="skill-group">
+                        <span class="skill-label">Languages</span>
+                        <div class="skill-chips">
+                            <span>C</span>
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>Bash</span>
+                            <span>TypeScript</span>
+                            <span>x86-64 ASM</span>
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-label">Security</span>
+                        <div class="skill-chips">
+                            <span>Binary exploitation</span>
+                            <span>Detection engineering</span>
+                            <span>SIGMA rules</span>
+                            <span>SIEM</span>
+                            <span>Reverse engineering</span>
+                            <span>Pentest</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <span class="skill-label">Infra & Tools</span>
+                        <div class="skill-chips">
+                            <span>Docker</span>
+                            <span>NGINX</span>
+                            <span>Datadog</span>
+                            <span>Okta</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section section-alt">
+        <div class="section-inner">
+            <h2>Projects</h2>
+
+            <!-- Featured -->
+            <div class="project-featured">
+                <div class="project-meta">
+                    <span class="project-tag">C++</span>
+                    <span class="project-tag">Networking</span>
+                    <span class="project-tag">Systems</span>
+                    <span class="score">125 / 100</span>
+                </div>
+                <h3>Webserv</h3>
+                <p>HTTP/1.1 server built from scratch in C++98. Non-blocking I/O via <code>epoll</code> — single process handling concurrent clients with no threads. Behavior validated against NGINX.</p>
+                <ul class="project-bullets">
+                    <li>GET, POST, DELETE with accurate HTTP status codes</li>
+                    <li>Config file: virtual hosts, custom routes, error pages, redirects, body size limits</li>
+                    <li>CGI integration: PHP and Python interpreters</li>
+                    <li>File upload, cookie & session management</li>
+                    <li>CI pipeline via GitHub Actions</li>
+                </ul>
+                <a href="https://github.com/Abensett/23.-Webserv" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+
+            <!-- Grid -->
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <div class="project-meta">
+                        <span class="project-tag">Docker</span>
+                        <span class="project-tag">Infra</span>
+                        <span class="score">125 / 100</span>
+                    </div>
+                    <h3>Inception</h3>
+                    <p>Multi-service Docker infrastructure in a VM. NGINX (TLS 1.2) as sole entry point, routing to WordPress (php-fpm) backed by MariaDB. Each service in its own container, no pre-built images.</p>
+                    <p class="project-detail">Bonus: Redis cache, FTP server, Adminer, cAdvisor monitoring.</p>
+                    <a href="https://github.com/Abensett/22.-Inception" class="btn-outline-sm" target="_blank" rel="noopener">GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-meta">
+                        <span class="project-tag">TypeScript</span>
+                        <span class="project-tag">NestJS</span>
+                        <span class="project-tag">React</span>
+                        <span class="score">100 / 100</span>
+                    </div>
+                    <h3>ft_transcendence</h3>
+                    <p>Full-stack real-time Pong platform. NestJS backend, React/TS frontend, PostgreSQL, Docker Compose. OAuth2 via 42 intranet, 2FA (email/TOTP), WebSocket gameplay, chat with channel moderation.</p>
+                    <p class="project-detail">SQL injection protection, input validation, password hashing.</p>
+                    <a href="https://github.com/Abensett/24.-Ft_transcendence" class="btn-outline-sm" target="_blank" rel="noopener">GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-meta">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">Systems</span>
+                        <span class="score">101 / 100</span>
+                    </div>
+                    <h3>Minishell</h3>
+                    <p>Bash-like shell in C. Custom lexer and parser from scratch. Pipes, I/O redirections, heredoc, environment variable expansion, signal handling (Ctrl+C, Ctrl+D, Ctrl+\).</p>
+                    <p class="project-detail">Built-ins: cd, echo, export, unset, env, exit.</p>
+                    <a href="https://github.com/Abensett/9.-Minishell" class="btn-outline-sm" target="_blank" rel="noopener">GitHub</a>
+                </div>
+
+                <div class="project-card project-card-security">
+                    <div class="project-meta">
+                        <span class="project-tag">x86-64</span>
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">ASM</span>
+                        <span class="project-tag">Security</span>
+                    </div>
+                    <h3>Security track</h3>
+                    <p>42 security branch. Stack-based buffer overflows, format string attacks, heap exploitation, ret2libc, ROP chains, x86-64 shellcode, privilege escalation, full pentest chain from recon to root.</p>
+                    <p class="project-repos">Rainfall · Snow Crash · Boot2Root · Override</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="section-inner contact-inner">
+            <h2>Contact</h2>
+            <p>Open to Security Engineer roles — detection, automation, offensive.</p>
+            <div class="contact-links">
+                <a href="mailto:work@aimen.be" class="btn">work@aimen.be</a>
+                <a href="https://github.com/Abensett" class="btn-outline" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
