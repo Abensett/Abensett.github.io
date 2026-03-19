@@ -520,7 +520,7 @@ code {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
@@ -633,6 +633,13 @@ code {
 
 /* ─── Responsive ─── */
 
+/* tablette large */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 /* tablette */
 @media (max-width: 860px) {
     .about-grid {
@@ -641,7 +648,7 @@ code {
     }
 
     .project-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .hero-content h1 {
