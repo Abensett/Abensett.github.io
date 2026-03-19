@@ -1,47 +1,63 @@
-<!-- TODO: rappel TypeScript (NestJS/React dans ft_transcendence, check les notes) -->
-<!-- TODO: changer le logo -->
 <!DOCTYPE html>
+<!-- lang="en" helps screen readers and search engines -->
 <html lang="en">
 <head>
+    <!-- UTF-8 handles all characters including accents and symbols -->
     <meta charset="UTF-8">
+    <!-- viewport prevents mobile browsers from zooming out to fit desktop width -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aimen</title>
+    <!-- preconnect opens the connection to Google Fonts early, reduces load time -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Poppins weights: 300 light, 400 regular, 500 medium, 600 semibold, 700 bold -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- favicons: browser tab (16/32px) and iOS home screen icon (180px) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 </head>
 <body>
 
+    <!-- nav stays fixed at the top, links scroll to section anchors -->
     <nav>
-        <img src="img/logo.png" class="logo" alt="logo">
+        <!-- animated logo, plays once, transparent background -->
+        <img src="img/nav-logo.gif" class="logo" alt="AB_">
         <ul>
+            <!-- href="#id" scrolls to the matching section id on the page -->
             <li><a href="#home">HOME</a></li>
             <li><a href="#about">ABOUT</a></li>
+            <li><a href="#experience">EXPERIENCE</a></li>
             <li><a href="#projects">PROJECTS</a></li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
+        <!-- aria-label makes the button readable by screen readers -->
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
             <span class="toggle-icon" id="toggleIcon">☽</span>
             <span id="toggleLabel">Dark</span>
         </button>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero : full-height landing section -->
     <section id="home" class="section hero">
         <div class="hero-content">
-            <!-- span : conteneur inline, pas de sémantique propre — sert juste à cibler du CSS -->
-            <span class="tag">SECURITY / AUTOMATION / TEACHING</span>
-            <!-- .accent applique la couleur verte définie dans style.css -->
+            <!-- span.accent applies the green color without adding block layout -->
             <h1><span class="accent">Aimen</span></h1>
-            <p class="hero-sub">Security branch · Detection engineering · Offensive security</p>
+            <p class="hero-sub">I like taking tech stuff apart to understand it. Only then does it truly make sense together. Teaching it makes it stick.</p>
             <div class="hero-actions">
+                <!-- btn is filled, btn-outline is bordered with transparent background -->
                 <a href="#projects" class="btn">View projects</a>
                 <a href="#contact" class="btn-outline">Contact</a>
             </div>
         </div>
-        <!-- hero : 9 formes géométriques décoratives -->
+
+        <!-- 9 decorative 3D shapes per section, absolutely positioned
+             --cs controls cube size, --gs controls flat shape size, --s controls pyramid size
+             animation-direction:reverse reuses the same keyframe but spins the other way
+             opacity set per shape to vary depth without adding new classes -->
         <div class="cube-deco" style="right:12%;top:22%;">
+            <!-- cube: 6 div faces positioned with translateZ in CSS, preserve-3d context -->
             <div class="cube" style="--cs:45px;animation-duration:15s;">
                 <div class="face front"></div><div class="face back"></div>
                 <div class="face left"></div><div class="face right"></div>
@@ -80,7 +96,11 @@
         <div class="geo-deco" style="left:2%;top:42%;opacity:0.18;">
             <div class="geo-triangle" style="--gs:32px;animation-duration:38s;animation-direction:reverse;"></div>
         </div>
+        <!-- main pyramid: larger, centered, this is the hero visual centerpiece -->
         <div class="pyramid-wrap">
+            <!-- pyramid: 4 triangles built with CSS border trick, rotated in 3D
+                 .base is the bottom face, .one .two .three .four are the side faces
+                 size is controlled by --s custom property on the .pyramid element -->
             <div class="pyramid">
                 <div class="base"></div>
                 <div class="triangle one"></div>
@@ -93,7 +113,6 @@
 
     <!-- About -->
     <section id="about" class="section">
-        <!-- about : 9 formes géométriques décoratives -->
         <div class="cube-deco" style="left:5%;top:30%;">
             <div class="cube" style="--cs:35px;animation-duration:25s;animation-direction:reverse;">
                 <div class="face front"></div><div class="face back"></div>
@@ -139,12 +158,14 @@
         </div>
         <div class="section-inner">
             <h2>About</h2>
+            <!-- about-grid: two columns on desktop, stacks to one column on mobile -->
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Computers are the medium I think in. Security is where that thinking gets tested.</p>
+                    <p>Computers are how I think. Security is where that thinking gets tested.</p>
                     <p>I break things to understand how they work. Then I build something with that knowledge. Then I explain it until I'm sure I actually got it.</p>
                     <p class="about-target">That loop is what keeps me going.</p>
                 </div>
+                <!-- skill-group: one group per category, skill-chips are the individual tags -->
                 <div class="skills">
                     <div class="skill-group">
                         <span class="skill-label">Languages</span>
@@ -176,6 +197,9 @@
                             <span>NGINX</span>
                             <span>Datadog</span>
                             <span>Okta</span>
+                            <span>Kandji</span>
+                            <span>Jamf</span>
+                            <span>Cloudflare</span>
                             <span>Git</span>
                         </div>
                     </div>
@@ -184,9 +208,104 @@
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Experience : vertical timeline with dot markers -->
+    <section id="experience" class="section">
+        <div class="geo-deco" style="right:4%;top:12%;opacity:0.2;">
+            <div class="geo-ring" style="--gs:70px;animation-duration:38s;"></div>
+        </div>
+        <div class="cube-deco" style="left:3%;top:25%;">
+            <div class="cube" style="--cs:40px;animation-duration:30s;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="right:8%;bottom:20%;opacity:0.18;">
+            <div class="geo-diamond" style="--gs:45px;animation-duration:42s;animation-direction:reverse;"></div>
+        </div>
+        <div class="pyramid-deco" style="right:2%;bottom:10%;">
+            <div class="pyramid" style="--s:65px;animation-duration:52s;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="left:30%;top:10%;opacity:0.18;">
+            <div class="geo-triangle" style="--gs:35px;animation-duration:28s;"></div>
+        </div>
+        <div class="geo-deco" style="left:8%;bottom:18%;opacity:0.2;">
+            <div class="geo-ring" style="--gs:50px;animation-duration:50s;animation-direction:reverse;"></div>
+        </div>
+        <div class="pyramid-deco" style="left:20%;bottom:8%;">
+            <div class="pyramid" style="--s:55px;animation-duration:65s;animation-direction:reverse;">
+                <div class="base"></div>
+                <div class="triangle one"></div><div class="triangle two"></div>
+                <div class="triangle three"></div><div class="triangle four"></div>
+            </div>
+        </div>
+        <div class="geo-deco" style="right:30%;top:18%;opacity:0.18;">
+            <div class="geo-diamond" style="--gs:30px;animation-duration:32s;"></div>
+        </div>
+        <div class="cube-deco" style="right:20%;bottom:25%;">
+            <div class="cube" style="--cs:35px;animation-duration:45s;animation-direction:reverse;">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face left"></div><div class="face right"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+        <div class="section-inner">
+            <h2>Experience</h2>
+            <!-- timeline: vertical line is a ::before pseudo-element on .timeline
+                 each .timeline-dot is a circle positioned on that line -->
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- timeline-header: flex row with space-between, date floats right -->
+                        <div class="timeline-header">
+                            <div>
+                                <h3>IT & Security Apprentice</h3>
+                                <span class="timeline-company">Welcome to the Jungle</span>
+                            </div>
+                            <span class="timeline-date">2025 — present</span>
+                        </div>
+                        <!-- strong highlights the SaaS tool names for quick scanning -->
+                        <ul class="timeline-details">
+                            <li><strong>Datadog SIEM</strong> — 50+ detection rules across <strong>Okta</strong>, <strong>Google Workspace</strong>, <strong>1Password</strong>, <strong>Notion</strong>. Investigation time: 2-4h to under 10 min (-95%)</li>
+                            <li>SaaS security audits: <strong>Okta</strong>, <strong>Google Workspace</strong>, <strong>Notion</strong>, <strong>Slack</strong> — misconfigs, findings, remediations</li>
+                            <li>ITSM migration <strong>Jira</strong> to <strong>Siit</strong>: full Python automation, zero manual transfer</li>
+                            <li><strong>Kandji</strong> + <strong>Jamf</strong> MDM: macOS fleet, resolved Passport Sync conflict, deployed custom config profiles</li>
+                            <li><strong>Cloudflare</strong>: DNS proxy setup</li>
+                            <li>SOC 2 compliance: GRC framework contribution, evidence collection automation</li>
+                            <li>Incident response: false positive tuning (-75%), investigation runbook, post-mortems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Programming Teacher</h3>
+                                <span class="timeline-company">MagicMakers</span>
+                            </div>
+                            <span class="timeline-date">2023</span>
+                        </div>
+                        <ul class="timeline-details">
+                            <li>Taught Python, Flask, MongoDB, HTML/CSS to kids and teenagers</li>
+                            <li>Created workshop curricula from scratch: database, dynamic pages, auth, debug</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects : section-alt gives the slightly different background color -->
     <section id="projects" class="section section-alt">
-        <!-- projects : 9 formes géométriques décoratives -->
         <div class="geo-deco" style="right:3%;top:10%;opacity:0.22;">
             <div class="geo-diamond" style="--gs:55px;animation-duration:35s;"></div>
         </div>
@@ -229,13 +348,21 @@
         <div class="section-inner">
             <h2>Projects</h2>
 
-            <!-- Featured -->
+            <!-- featured card: bigger layout, shows the main project with bullet details -->
             <div class="project-featured">
+                <!-- project-meta: stack tags (filled green), project-concepts: key notions (outlined) -->
                 <div class="project-meta">
-                    <span class="project-tag">C++</span>
+                    <span class="project-tag">C++98</span>
                     <span class="project-tag">Networking</span>
                     <span class="project-tag">Systems</span>
-                    <span class="score">125 / 100</span>
+                </div>
+                <div class="project-concepts">
+                    <span class="concept-tag">Non-blocking I/O</span>
+                    <span class="concept-tag">epoll</span>
+                    <span class="concept-tag">Socket programming</span>
+                    <span class="concept-tag">HTTP/1.1</span>
+                    <span class="concept-tag">CGI</span>
+                    <span class="concept-tag">Virtual hosts</span>
                 </div>
                 <h3>Webserv</h3>
                 <p>HTTP/1.1 server built from scratch in C++98. Non-blocking I/O via <code>epoll</code>, single process, no threads. Behavior validated against NGINX.</p>
@@ -246,17 +373,24 @@
                     <li>File upload, cookie & session management</li>
                     <li>CI pipeline via GitHub Actions</li>
                 </ul>
+                <!-- target="_blank" opens in new tab, rel="noopener" prevents the new tab from accessing window.opener -->
                 <a href="https://github.com/Abensett/23.-Webserv" class="btn" target="_blank" rel="noopener">View on GitHub</a>
             </div>
 
-            <!-- Grid -->
+            <!-- project-grid: 3 columns desktop, 2 at 1024px, 1 on mobile -->
             <div class="project-grid">
 
                 <div class="project-card">
                     <div class="project-meta">
                         <span class="project-tag">Docker</span>
                         <span class="project-tag">Infra</span>
-                        <span class="score">125 / 100</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Container isolation</span>
+                        <span class="concept-tag">TLS 1.2</span>
+                        <span class="concept-tag">Reverse proxy</span>
+                        <span class="concept-tag">php-fpm</span>
+                        <span class="concept-tag">MariaDB</span>
                     </div>
                     <h3>Inception</h3>
                     <p>Multi-service Docker infrastructure in a VM. NGINX (TLS 1.2) as sole entry point, routing to WordPress (php-fpm) backed by MariaDB. Each service in its own container, no pre-built images.</p>
@@ -269,7 +403,14 @@
                         <span class="project-tag">TypeScript</span>
                         <span class="project-tag">NestJS</span>
                         <span class="project-tag">React</span>
-                        <span class="score">100 / 100</span>
+                        <span class="project-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">OAuth2</span>
+                        <span class="concept-tag">2FA / TOTP</span>
+                        <span class="concept-tag">WebSocket</span>
+                        <span class="concept-tag">Real-time</span>
+                        <span class="concept-tag">SQL injection protection</span>
                     </div>
                     <h3>ft_transcendence</h3>
                     <p>Full-stack real-time Pong platform. NestJS backend, React/TS frontend, PostgreSQL, Docker Compose. OAuth2 via 42 intranet, 2FA (email/TOTP), WebSocket gameplay, chat with channel moderation.</p>
@@ -281,7 +422,13 @@
                     <div class="project-meta">
                         <span class="project-tag">C</span>
                         <span class="project-tag">Systems</span>
-                        <span class="score">101 / 100</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Lexer / Parser</span>
+                        <span class="concept-tag">Pipes</span>
+                        <span class="concept-tag">File descriptors</span>
+                        <span class="concept-tag">Signal handling</span>
+                        <span class="concept-tag">Process management</span>
                     </div>
                     <h3>Minishell</h3>
                     <p>Bash-like shell in C. Custom lexer and parser from scratch. Pipes, I/O redirections, heredoc, environment variable expansion, signal handling (Ctrl+C, Ctrl+D, Ctrl+\).</p>
@@ -291,10 +438,17 @@
 
                 <div class="project-card">
                     <div class="project-meta">
-                        <span class="project-tag">Next.js</span>
+                        <span class="project-tag">Next.js 15</span>
                         <span class="project-tag">TypeScript</span>
                         <span class="project-tag">Supabase</span>
                         <span class="project-tag">Mapbox</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Geolocation</span>
+                        <span class="concept-tag">REST API</span>
+                        <span class="concept-tag">Cron jobs</span>
+                        <span class="concept-tag">PostgreSQL</span>
+                        <span class="concept-tag">Interactive map</span>
                     </div>
                     <h3>EssenceMoinsCher.fr</h3>
                     <p>Fuel price comparator using official French government data. Geolocation, interactive map, search and filtering across 9,934 stations and 33,994 prices updated daily via Vercel cron.</p>
@@ -302,36 +456,105 @@
                     <a href="https://essencemoinscher.fr" class="btn" target="_blank" rel="noopener">Live demo</a>
                 </div>
 
+                <!-- project-card-security: adds a green left border to mark offensive/security projects -->
                 <div class="project-card project-card-security">
                     <div class="project-meta">
                         <span class="project-tag">Python</span>
                         <span class="project-tag">Bash</span>
                         <span class="project-tag">C</span>
-                        <span class="project-tag">Security</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Port scanning</span>
+                        <span class="concept-tag">Banner grabbing</span>
+                        <span class="concept-tag">CIDR</span>
+                        <span class="concept-tag">DNS resolution</span>
+                        <span class="concept-tag">IDOR detection</span>
                     </div>
                     <h3>Security Toolkit</h3>
                     <p>Custom offensive tools for OSCP prep and bug bounty. Port scanner: TCP/UDP, CIDR support, banner grabbing, DNS resolution, JSON output. More tools in progress: format string helper, IDOR checker, header auditor.</p>
+                    <!-- project-wip badge replaces the GitHub link when repo is not yet public -->
                     <span class="project-wip">in progress</span>
                 </div>
 
                 <div class="project-card project-card-security">
                     <div class="project-meta">
-                        <span class="project-tag">x86-64</span>
                         <span class="project-tag">C</span>
-                        <span class="project-tag">ASM</span>
                         <span class="project-tag">Security</span>
+                        <span class="project-tag">CTF</span>
                     </div>
-                    <h3>Security track</h3>
-                    <p>42 security branch. Stack-based buffer overflows, format string attacks, heap exploitation, ret2libc, ROP chains, x86-64 shellcode, privilege escalation, full pentest chain from recon to root.</p>
-                    <p class="project-repos">Rainfall · Snow Crash · Boot2Root · Override</p>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Privilege escalation</span>
+                        <span class="concept-tag">Reverse engineering</span>
+                        <span class="concept-tag">SUID binaries</span>
+                        <span class="concept-tag">Weak crypto</span>
+                        <span class="concept-tag">Script injection</span>
+                    </div>
+                    <h3>Snow Crash</h3>
+                    <p>CTF-format security challenges. Privilege escalation, reverse engineering, exploiting weak file permissions, SUID binaries, Lua and Python injection, weak crypto.</p>
+                </div>
+
+                <div class="project-card project-card-security">
+                    <div class="project-meta">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">x86-64</span>
+                        <span class="project-tag">GDB</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Buffer overflow</span>
+                        <span class="concept-tag">Format strings</span>
+                        <span class="concept-tag">ret2libc</span>
+                        <span class="concept-tag">Shellcode</span>
+                        <span class="concept-tag">Heap exploitation</span>
+                    </div>
+                    <h3>Rainfall</h3>
+                    <p>Binary exploitation chain. Stack buffer overflows, format string attacks (%n write), heap exploitation, ret2libc, shellcode injection. GDB debugging, payload crafting level by level.</p>
+                </div>
+
+                <div class="project-card project-card-security">
+                    <div class="project-meta">
+                        <span class="project-tag">Pentest</span>
+                        <span class="project-tag">Linux</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Recon</span>
+                        <span class="concept-tag">Enumeration</span>
+                        <span class="concept-tag">Exploitation</span>
+                        <span class="concept-tag">Privilege escalation</span>
+                        <span class="concept-tag">Post-exploitation</span>
+                    </div>
+                    <h3>Boot2Root</h3>
+                    <p>Full penetration test on a target machine. Recon, enumeration, exploitation, privilege escalation, post-exploitation. Complete attack chain documented from zero access to root.</p>
+                </div>
+
+                <div class="project-card project-card-security">
+                    <div class="project-meta">
+                        <span class="project-tag">C</span>
+                        <span class="project-tag">x86-64 ASM</span>
+                        <span class="project-tag">GDB</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Format strings</span>
+                        <span class="concept-tag">%N$lx technique</span>
+                        <span class="concept-tag">x86-64 SysV ABI</span>
+                        <span class="concept-tag">RSP manipulation</span>
+                        <span class="concept-tag">Control flow hijacking</span>
+                    </div>
+                    <h3>Override</h3>
+                    <p>Advanced binary exploitation. Format string attacks with %N$lx technique, x86-64 System V ABI calling convention, RSP register manipulation for control flow hijacking.</p>
                 </div>
 
                 <div class="project-card">
                     <div class="project-meta">
                         <span class="project-tag">C</span>
                         <span class="project-tag">Graphics</span>
-                        <span class="project-tag">Raycasting</span>
-                        <span class="score">121 / 100</span>
+                        <span class="project-tag">miniLibX</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Raycasting</span>
+                        <span class="concept-tag">DDA algorithm</span>
+                        <span class="concept-tag">Trigonometry</span>
+                        <span class="concept-tag">Texture mapping</span>
+                        <span class="concept-tag">Collision detection</span>
                     </div>
                     <h3>Cub3d</h3>
                     <p>3D raycasting engine in C inspired by Wolfenstein 1992. Real-time first-person rendering, textured walls, configurable maps via .cub files.</p>
@@ -344,7 +567,13 @@
                         <span class="project-tag">C</span>
                         <span class="project-tag">Threads</span>
                         <span class="project-tag">Concurrency</span>
-                        <span class="score">121 / 100</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Mutex</span>
+                        <span class="concept-tag">Semaphore</span>
+                        <span class="concept-tag">Deadlock prevention</span>
+                        <span class="concept-tag">Race conditions</span>
+                        <span class="concept-tag">Shared memory</span>
                     </div>
                     <h3>Philosophers</h3>
                     <p>Dining philosophers problem in C. Thread creation, mutex locks, semaphores, shared memory, process forking. Deadlock prevention without data races.</p>
@@ -355,8 +584,14 @@
                     <div class="project-meta">
                         <span class="project-tag">C</span>
                         <span class="project-tag">Graphics</span>
-                        <span class="project-tag">Maths</span>
-                        <span class="score">125 / 100</span>
+                        <span class="project-tag">miniLibX</span>
+                    </div>
+                    <div class="project-concepts">
+                        <span class="concept-tag">Complex numbers</span>
+                        <span class="concept-tag">Mandelbrot set</span>
+                        <span class="concept-tag">Julia set</span>
+                        <span class="concept-tag">Pixel rendering</span>
+                        <span class="concept-tag">Zoom precision</span>
                     </div>
                     <h3>Fract-ol</h3>
                     <p>Interactive fractal renderer in C. Mandelbrot, Julia, Burning Ship, Burning Bird. Complex number math, pixel-level rendering, graphics optimization with miniLibX.</p>
@@ -369,7 +604,6 @@
 
     <!-- Contact -->
     <section id="contact" class="section">
-        <!-- contact : 9 formes géométriques décoratives -->
         <div class="cube-deco" style="left:10%;bottom:25%;">
             <div class="cube" style="--cs:50px;animation-duration:18s;">
                 <div class="face front"></div><div class="face back"></div>
@@ -415,7 +649,12 @@
         </div>
         <div class="section-inner contact-inner">
             <h2>Contact</h2>
-            <p>Open to Security Engineer roles. Detection, automation, offensive.</p>
+            <p>Open to Security Engineer roles.</p>
+            <div class="contact-tags">
+                <span class="project-tag">Detection</span>
+                <span class="project-tag">Automation</span>
+                <span class="project-tag">Offensive security</span>
+            </div>
             <div class="contact-links">
                 <a href="mailto:work@aimen.be" class="btn">work@aimen.be</a>
                 <a href="https://github.com/Abensett" class="btn-outline" target="_blank" rel="noopener">GitHub</a>
@@ -428,13 +667,14 @@
         const icon  = document.getElementById('toggleIcon');
         const label = document.getElementById('toggleLabel');
 
-        // restaure la préférence au chargement
+        // on page load, restore the saved theme from localStorage
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
             icon.textContent  = '☀';
             label.textContent = 'Light';
         }
 
+        // on click, toggle the dark class and persist the new preference
         btn.addEventListener('click', () => {
             document.body.classList.toggle('dark');
             const isDark = document.body.classList.contains('dark');

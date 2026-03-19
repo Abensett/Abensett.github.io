@@ -9,14 +9,14 @@ Objectif : présenter le profil Security Engineer avec les projets les plus repr
 
 ## Stack
 
-| Couche | Choix |
-|---|---|
-| Structure | HTML5 sémantique |
-| Style | CSS vanilla avec custom properties |
-| Animations | CSS 3D transforms (`preserve-3d`) |
-| Dark mode | `body.dark` + `localStorage` + JS vanilla (20 lignes) |
-| Fonts | Poppins via Google Fonts |
-| Déploiement | GitHub Pages / Vercel (statique) |
+| Couche      | Choix                                                 |
+| ----------- | ----------------------------------------------------- |
+| Structure   | HTML5 sémantique                                      |
+| Style       | CSS vanilla avec custom properties                    |
+| Animations  | CSS 3D transforms (`preserve-3d`)                     |
+| Dark mode   | `body.dark` + `localStorage` + JS vanilla (20 lignes) |
+| Fonts       | Poppins via Google Fonts                              |
+| Déploiement | GitHub Pages / Vercel (statique)                      |
 
 Zéro dépendance. Zéro build step.
 
@@ -25,6 +25,7 @@ Zéro dépendance. Zéro build step.
 ## Architecture CSS
 
 ### Custom properties
+
 Toutes les valeurs variables centralisées dans `:root`. Dark mode = redéfinir les mêmes variables sous `body.dark`.
 
 ```css
@@ -33,27 +34,35 @@ body.dark { --accent: #5cb840; --bg: #070d07; ... }
 ```
 
 ### Formes géométriques 3D
+
 Cinq formes, même principe : `transform-style: preserve-3d` + `@keyframes Rotate`.
 
-| Forme | Technique |
-|---|---|
-| Pyramide | 4 triangles CSS (border trick) en 3D |
-| Cube | 6 faces `div` positionnées avec `translateZ` |
-| Ring | Cercle `border-radius: 50%` qui tourne en 3D |
-| Diamond | Carré avec `rotateZ(45deg)` dans le keyframe |
-| Triangle plat | Border trick, tourne librement |
+| Forme         | Technique                                    |
+| ------------- | -------------------------------------------- |
+| Pyramide      | 4 triangles CSS (border trick) en 3D         |
+| Cube          | 6 faces `div` positionnées avec `translateZ` |
+| Ring          | Cercle `border-radius: 50%` qui tourne en 3D |
+| Diamond       | Carré avec `rotateZ(45deg)` dans le keyframe |
+| Triangle plat | Border trick, tourne librement               |
 
 La pyramide utilise `--s` comme unique variable de taille. Tout dérive de là :
 
 ```css
-.pyramid { --s: 200px; }
-.triangle { border: calc(var(--s) / 2) solid transparent; }
-.two { transform-origin: calc(var(--s) / 2) 0; }
+.pyramid {
+  --s: 200px;
+}
+.triangle {
+  border: calc(var(--s) / 2) solid transparent;
+}
+.two {
+  transform-origin: calc(var(--s) / 2) 0;
+}
 ```
 
 Changer `--s` en inline style suffit pour une version plus petite.
 
 ### Dark mode glow
+
 - Cubes : `box-shadow` sur `.face` (ne casse pas `preserve-3d`)
 - Pyramides : `filter: drop-shadow` sur le wrapper (aplatit le 3D, acceptable pour les décos)
 - Ring / Diamond : `box-shadow` double couche
@@ -63,12 +72,12 @@ Changer `--s` en inline style suffit pour une version plus petite.
 
 ## Sections
 
-| Section | Contenu |
-|---|---|
-| Hero | Nom, tagline, CTA, pyramide principale animée |
-| About | Bio courte, skills chips (Languages / Security / Infra) |
+| Section  | Contenu                                                                                                                   |
+| -------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Hero     | Nom, tagline, CTA, pyramide principale animée                                                                             |
+| About    | Bio courte, skills chips (Languages / Security / Infra)                                                                   |
 | Projects | Webserv (featured) + 5 cards : Inception, ft_transcendence, Minishell, EssenceMoinsCher, Security Toolkit, Security track |
-| Contact | Email + GitHub |
+| Contact  | Email + GitHub                                                                                                            |
 
 ---
 
