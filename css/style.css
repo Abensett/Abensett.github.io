@@ -106,7 +106,7 @@ nav ul li a:hover {
 
 /* ─── Sections ─── */
 .section {
-    min-height: 100vh;
+    min-height: 100svh;
     padding: calc(var(--nav-h) + 80px) 6% 80px;
     display: flex;
     align-items: center;
@@ -776,22 +776,26 @@ body.dark .timeline::before {
 
 /* mobile */
 @media (max-width: 640px) {
-    /* sections moins de padding */
     .section {
         padding: calc(var(--nav-h) + 40px) 5% 56px;
         align-items: flex-start;
     }
 
-    /* nav : on cache les liens, logo + bouton restent */
     nav {
         padding: 0 5%;
     }
 
+    /* hide nav links on mobile, keep logo + dark mode toggle */
     nav ul {
         display: none;
     }
 
-    /* hero : colonne, pyramide en bas centrée */
+    /* shrink logo so it fits inside the nav bar */
+    .logo {
+        height: 48px;
+        width: 48px;
+    }
+
     .hero {
         flex-direction: column;
         justify-content: center;
@@ -803,7 +807,6 @@ body.dark .timeline::before {
         max-width: 100%;
     }
 
-    /* --s contrôle toute la taille, une seule ligne suffit */
     .pyramid-wrap {
         align-self: center;
         width: 160px;
@@ -816,30 +819,53 @@ body.dark .timeline::before {
 
     .hero-actions {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 10px;
     }
 
-    /* cacher les formes déco sur mobile : trop chargé */
+    .hero-actions .btn,
+    .hero-actions .btn-outline {
+        text-align: center;
+    }
+
+    /* hide decorative shapes on mobile */
     .geo-deco,
     .pyramid-deco,
     .cube-deco {
         display: none;
     }
 
-    /* projets */
+    h2 {
+        font-size: 1.4rem;
+        margin-bottom: 32px;
+    }
+
+    /* project grid: 1 column on mobile */
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
     .project-featured {
-        padding: 20px;
+        padding: 18px 16px;
     }
 
     .project-featured h3 {
         font-size: 1.2rem;
     }
 
+    /* timeline list: slightly smaller text on narrow screens */
+    .timeline-details li {
+        font-size: 0.82rem;
+    }
+
     /* contact */
+    .contact-tags {
+        justify-content: flex-start;
+    }
+
     .contact-links {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         width: 100%;
     }
 
@@ -848,14 +874,14 @@ body.dark .timeline::before {
         width: 100%;
         text-align: center;
     }
-
-    h2 {
-        font-size: 1.4rem;
-    }
 }
 
 /* petit mobile */
 @media (max-width: 400px) {
+    .section {
+        padding: calc(var(--nav-h) + 28px) 4% 40px;
+    }
+
     .skill-chips span {
         font-size: 0.7rem;
         padding: 3px 8px;
@@ -864,6 +890,14 @@ body.dark .timeline::before {
     .project-tag,
     .concept-tag {
         font-size: 0.62rem;
+    }
+
+    .hero-sub {
+        font-size: 0.88rem;
+    }
+
+    .timeline-header h3 {
+        font-size: 0.95rem;
     }
 }
 
